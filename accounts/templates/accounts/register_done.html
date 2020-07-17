@@ -1,0 +1,14 @@
+{% extends "portfolio/base.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+  <div class="content container">
+      <div class="jumbotron">
+      <h1 class="display-4">Hello {{ new_user.first_name }}</h1>
+       <p>Your account has been successfully created. Now you can <a href="{% url "login" %}">log in</a>.</p>
+
+</div>
+</div>
+
+{% endblock %}

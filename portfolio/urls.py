@@ -17,5 +17,6 @@ path('investment_list', views.investment_list, name='investment_list'),
 path('investment/create/', views.investment_new, name='investment_new'),
 path('investment/<int:pk>/edit/', views.investment_edit, name='investment_edit'),
 path('investment/<int:pk>/delete/', views.investment_delete, name='investment_delete'),
+path('cutomer/create/', views.customer_new, name='customer_new'),
 
 ]

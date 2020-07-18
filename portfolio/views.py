@@ -32,7 +32,7 @@ def customer_new(request):
            customer.save()
            customer = Customer.objects.filter(created_date__lte=timezone.now())
            return render(request, 'portfolio/customer_list.html',
-                         {'customer': customer})
+                         {'customers': customer})
    else:
        form = CustomerForm()
        # print("Else")

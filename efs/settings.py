@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'portfolio',
     'crispy_forms',
+    'rest_framework',
+    'mathfilters',
+    'django.contrib.humanize'
 
 ]
 
@@ -138,14 +141,16 @@ LOGOUT_REDIRECT_URL='/home'
 
 AUTH_USER_MODEL = "accounts.CustomUser"
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'yeshassignment'
-EMAIL_HOST_PASSWORD = 'maverick@1'
+EMAIL_HOST_USER = 'apikey'
+#EMAIL_HOST_PASSWORD = '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'
+EMAIL_HOST_PASSWORD='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'
+
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'jdyesh@gmail.com'
-
+DEFAULT_FROM_EMAIL = 'yesh080690@gmail.com'
 
 
 # Static files (CSS, JavaScript, Images)

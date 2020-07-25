@@ -20,7 +20,7 @@
             background: #7F7FD5;
             background: -webkit-linear-gradient(to right, #ffffff, #ffffff);
             background: linear-gradient(to right, #ffffff, #de9404);
-        }
+    }
         #events_card{
             padding-bottom: 40px;
         }
@@ -37,7 +37,9 @@
                 <li class="nav-item lead"><a class=nav-link href="{% url 'portfolio:home' %}">Home</a></li>
                 <li class="nav-item lead"><a class=nav-link href="{% url 'portfolio:customer_list' %}">Customers</a></li>
                 <li class="nav-item lead"><a class=nav-link href="{% url 'portfolio:stock_list' %}">Investment</a></li>
-                <li class="nav-item lead"><a class=nav-link href="{% url 'portfolio:stock_list' %}">Stocks</a></li>
+                <li class="nav-item lead"><a class=nav-link href="{% url 'portfolio:investment_list' %}">Stocks</a></li>
+                <li class="nav-item lead"><a class=nav-link href="{% url 'portfolio:mutualfund_list' %}">MutualFund</a></li>
+
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -55,7 +57,7 @@
 </nav>
 <div class="content container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
             {% block content %}
                 <div class="links">
                     <!-- Example row of columns -->

@@ -143,14 +143,13 @@ AUTH_USER_MODEL = "accounts.CustomUser"
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'apikey'
-#EMAIL_HOST_PASSWORD = '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'
-EMAIL_HOST_PASSWORD='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'
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = os.environ.get('EMAIL_PORT')
+EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS')
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'yesh080690@gmail.com'
 
 
 # Static files (CSS, JavaScript, Images)

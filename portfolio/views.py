@@ -15,12 +15,17 @@ from io import BytesIO
 from io import StringIO  ## for Python 3
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
-
 from efs import settings
 from xhtml2pdf import pisa
 from django.http import HttpResponse
 from django.views.generic import View
 from .utils import render_to_pdf
+from efs import settings
+from django.shortcuts import render
+import random
+import datetime
+import time
+
 now = timezone.now()
 def home(request):
    return render(request, 'portfolio/home.html',
@@ -36,6 +41,7 @@ def customer_list(request):
 
     #send_mail('Example Subject', 'Example message', 'jdyesh@gmail.com', ['yesh080690@gmail.com'])
     customer = Customer.objects.filter(created_date__lte=timezone.now())
+
     return render(request, 'portfolio/customer_list.html',
                  {'customers': customer})
 
@@ -203,6 +209,17 @@ def portfolio(request,pk):
        sum_acquired_value_mf)
    portfolio_current_investments = float(sum_current_stocks_value) + float(sum_recent_value) + float(
        sum_recent_value_mf)
+   url = "https://openexchangerates.org/api/latest.json?app_id="
+   app_id = settings.OPENEXCHANGE_APP_ID
+   additional = "&base=USD"
+   main_url = url + app_id + additional
+   json_data = requests.get(main_url).json()
+   value = json_data.get('rates')
+   new_currency = value.get('INR')
+   INR_inital_value=new_currency * portfolio_initial_investments
+   INR_current_value=new_currency * portfolio_current_investments
+
+   print(INR_inital_value)
 
    return render(request, 'portfolio/portfolio.html', {'customers': customers,
                                                        'customer': customer,
@@ -216,7 +233,9 @@ def portfolio(request,pk):
                                                        'portfolio_initial_investments': portfolio_initial_investments,
                                                        'portfolio_current_investments': portfolio_current_investments,
                                                        'sum_acquired_value_mf':sum_acquired_value_mf,
-                                                       'sum_recent_value_mf':sum_recent_value_mf
+                                                       'sum_recent_value_mf':sum_recent_value_mf,
+                                                       'INR_inital_value':INR_inital_value,
+                                                       'INR_current_value':INR_current_value
 
 
                                                        })
@@ -336,3 +355,13 @@ def download_pdf(request, pk):
  return HttpResponse(pdf, content_type='application/pdf')
 
 
+
+
+
+
+def portfolio_piechart(request):
+ labels = []
+ data = []
+ labels=['Stocks','Mutual Fund', 'Investment' ]
+ data=[100,200,200]
+ return render(request, 'portfolio/portfolio.html', {'labels': labels,'data': data,})

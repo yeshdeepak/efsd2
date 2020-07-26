@@ -26,6 +26,7 @@ path('mutualfund_list', views.mutualfund_list, name='mutualfund_list'),
 path('mutualfund/create/', views.mutualfund_new, name='mutualfund_new'),
 path('mutualfund/<int:pk>/edit/', views.mutualfund_edit, name='mutualfund_edit'),
 path('mutualfund/<int:pk>/delete/', views.mutualfund_delete, name='mutualfund_delete'),
+path('viewgraph/', views.portfolio_piechart, name='portfolio_piechart'),
 
 ]
 

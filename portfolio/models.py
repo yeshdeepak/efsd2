@@ -78,9 +78,11 @@ class Stock(models.Model):
         url = main_api + symbol_f + api_key
         json_data = requests.get(url).json()
         #open_price = float(json_data["Global Quote"]["02. open"])
-        open_price=0
+        open_price=3900
         share_value = open_price
         return share_value
+
+
 
     def current_stock_value(self):
         return float(self.current_stock_price()) * float(self.shares)

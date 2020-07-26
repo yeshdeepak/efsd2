@@ -77,8 +77,8 @@ class Stock(models.Model):
         api_key = '&interval=1min&apikey=0UW1QFLODU5QOVEO'
         url = main_api + symbol_f + api_key
         json_data = requests.get(url).json()
-        #open_price = float(json_data["Global Quote"]["02. open"])
-        open_price=3900
+        open_price = float(json_data["Global Quote"]["02. open"])
+        #open_price=3900
         share_value = open_price
         return share_value
 
